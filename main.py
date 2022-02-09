@@ -36,7 +36,7 @@ parser.add_argument("-r","--dropout_rate", type=float, default=0.3,
                     help="Dropout rate of the graph neural network")
 parser.add_argument("-d","--dataset", type=str, default="cifar100",
                     help="")
-parser.add_argument("-e","--no_of_epochs", type=int, default=20,
+parser.add_argument("-e","--no_of_epochs", type=int, default=200,
                     help="Number of epochs for the active learner")
 parser.add_argument("-m","--method_type", type=str, default="lloss",
                     help="")
