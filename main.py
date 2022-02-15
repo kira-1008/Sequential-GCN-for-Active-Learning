@@ -44,7 +44,7 @@ parser.add_argument("-c","--cycles", type=int, default=5,
                     help="Number of active learning cycles")
 parser.add_argument("-t","--total", type=bool, default=False,
                     help="Training on the entire dataset")
-
+parser.add_argument("-layers","--num_layers",type=int,default=2,help="Number of layers in the GCN")
 args = parser.parse_args()
 
 ##
