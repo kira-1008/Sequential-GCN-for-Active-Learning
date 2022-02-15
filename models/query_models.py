@@ -99,7 +99,7 @@ class GCN(nn.Module):
         for i, layer in enumerate(self.hidden_layers):
             x = layer(x, adj)
             x = self.norm(x)
-            x=x = self.relu(x)
+            x= self.relu(x)
             feat=F.dropout(x, self.dropout, training=self.training)
         x = self.out_layer(x, adj)
         #x = self.linear(x)
