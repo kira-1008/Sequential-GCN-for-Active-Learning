@@ -5,6 +5,7 @@ import torch.nn.init as init
 import torch.nn.functional as F 
 from torch.nn.parameter import Parameter
 from torch.nn.modules.module import Module
+from .layers import PairNorm
 
 
 class LossNet(nn.Module):
@@ -79,7 +80,7 @@ class GraphConvolution(Module):
                + str(self.out_features) + ')'
 
 class GCN(nn.Module):
-    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1):
+    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1,norm_mode='None',norm_scale=1):
         super(GCN, self).__init__()
 
         assert nlayer >= 1 
@@ -89,12 +90,16 @@ class GCN(nn.Module):
         ])
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
+        self.norm = PairNorm(norm_mode, norm_scale)
         self.linear = nn.Linear(nclass, 1)
+        self.relu = nn.ReLU(True)
 
     def forward(self, x, adj):
 
         for i, layer in enumerate(self.hidden_layers):
             x = layer(x, adj)
+            x = self.norm(x)
+            x=x = self.relu(x)
             feat=F.dropout(x, self.dropout, training=self.training)
         x = self.out_layer(x, adj)
         #x = self.linear(x)

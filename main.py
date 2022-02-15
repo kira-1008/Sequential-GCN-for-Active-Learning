@@ -45,6 +45,9 @@ parser.add_argument("-c","--cycles", type=int, default=5,
 parser.add_argument("-t","--total", type=bool, default=False,
                     help="Training on the entire dataset")
 parser.add_argument("-layers","--num_layers",type=int,default=2,help="Number of layers in the GCN")
+# - PairNorm mode, use PN-SI or PN-SCS for GCN and GAT. With more than 5 layers get lots improvement.
+parser.add_argument('--norm_mode', type=str, default='None', help='Mode for PairNorm, {None, PN, PN-SI, PN-SCS}')
+parser.add_argument('--norm_scale', type=float, default=1.0, help='Row-normalization scale')
 args = parser.parse_args()
 
 ##

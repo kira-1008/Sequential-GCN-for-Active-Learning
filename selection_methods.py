@@ -218,7 +218,9 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
         gcn_module = GCN(nfeat=features.shape[1],
                          nhid=args.hidden_units,
                          nclass=1,
-                         dropout=args.dropout_rate,nlayer=args.num_layers).cuda()
+                         dropout=args.dropout_rate,nlayer=args.num_layers,
+                         norm_mode=args.norm_mode,
+                         norm_scale=args.norm_scale).cuda()
                                 
         models      = {'gcn_module': gcn_module}
 
