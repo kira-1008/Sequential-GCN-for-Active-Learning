@@ -79,19 +79,23 @@ class GraphConvolution(Module):
                + str(self.out_features) + ')'
 
 class GCN(nn.Module):
-    def __init__(self, nfeat, nhid, nclass, dropout):
+    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1):
         super(GCN, self).__init__()
 
-        self.gc1 = GraphConvolution(nfeat, nhid)
-        self.gc2 = GraphConvolution(nhid, nhid)
-        self.gc3 = GraphConvolution(nhid, nclass)
+        assert nlayer >= 1 
+        self.hidden_layers = nn.ModuleList([
+            GraphConvolution(nfeat if i==0 else nhid, nhid) 
+            for i in range(nlayer-1)
+        ])
+        self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
         self.linear = nn.Linear(nclass, 1)
 
     def forward(self, x, adj):
-        x = F.relu(self.gc1(x, adj))
-        feat = F.dropout(x, self.dropout, training=self.training)
-        x = self.gc3(feat, adj)        
+        for i, layer in enumerate(self.hidden_layers):
+            x = layer(x, adj)
+            feat=F.dropout(x, self.dropout, training=self.training)
+        x = self.out_layer(x, adj)
         #x = self.linear(x)
         # x = F.softmax(x, dim=1)
         return torch.sigmoid(x), feat, torch.cat((feat,x),1)
@@ -210,3 +214,4 @@ def kaiming_init(m):
         m.weight.data.fill_(1)
         if m.bias is not None:
             m.bias.data.fill_(0)
+
