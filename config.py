@@ -11,7 +11,7 @@ ADDENDUM  = 1000 # K
 MARGIN = 1.0 # xi
 WEIGHT = 1.0 # lambda
 
-TRIALS = 1
+TRIALS = 5
 CYCLES = 5
 
 EPOCH = 200

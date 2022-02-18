@@ -221,7 +221,7 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
                          dropout=args.dropout_rate,nlayer=args.num_layers,
                          norm_mode=args.norm_mode,
                          norm_scale=args.norm_scale).cuda()
-                                
+
         models      = {'gcn_module': gcn_module}
 
         optim_backbone = optim.Adam(models['gcn_module'].parameters(), lr=LR_GCN, weight_decay=WDECAY)

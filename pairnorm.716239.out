@@ -1,0 +1,457 @@
+==========================================
+SLURM_CLUSTER_NAME = param-shivay
+SLURM_JOB_ACCOUNT = comp_sci_engg
+SLURM_JOB_ID = 716239
+SLURM_JOB_NAME = pairnorm
+SLURM_JOB_NODELIST = gpu002
+SLURM_JOB_USER = tulika.mishra.cse19.iitbhu
+SLURM_JOB_UID = 5483
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 19131
+SLURM_SUBMIT_DIR = /home/tulika.mishra.cse19.iitbhu/btp/Sequential-GCN-for-Active-Learning
+SLURM_CPUS_ON_NODE = 1
+SLURM_NTASKS = 
+SLURM_TASK_PID = 19131
+==========================================
+Dataset: cifar10
+Method type:UncertainGCN
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 1/10 || Label set size 1000: Test acc 43.89
+Max confidence value:  tensor(0.6398, device='cuda:0')
+Mean confidence value:  tensor(0.4524, device='cuda:0')
+Labeled classified:  0.228
+Unlabeled classified:  0.8458
+Total classified:  0.7896363636363637
+2000 50 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 2/10 || Label set size 2000: Test acc 60.3
+Max confidence value:  tensor(0.5614, device='cuda:0')
+Mean confidence value:  tensor(0.4829, device='cuda:0')
+Labeled classified:  0.2485
+Unlabeled classified:  0.7743
+Total classified:  0.6866666666666666
+3000 35 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 3/10 || Label set size 3000: Test acc 67.88
+Max confidence value:  tensor(0.5104, device='cuda:0')
+Mean confidence value:  tensor(0.4642, device='cuda:0')
+Labeled classified:  0.003
+Unlabeled classified:  0.9928
+Total classified:  0.7643846153846154
+4000 19 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 4/10 || Label set size 4000: Test acc 78.67
+Max confidence value:  tensor(0.4525, device='cuda:0')
+Mean confidence value:  tensor(0.4469, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7142857142857143
+5000 19 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 5/10 || Label set size 5000: Test acc 81.99
+Max confidence value:  tensor(0.4800, device='cuda:0')
+Mean confidence value:  tensor(0.4529, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.6666666666666666
+6000 19 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 6/10 || Label set size 6000: Test acc 81.99
+Max confidence value:  tensor(0.5236, device='cuda:0')
+Mean confidence value:  tensor(0.4480, device='cuda:0')
+Labeled classified:  0.050833333333333335
+Unlabeled classified:  0.9765
+Total classified:  0.629375
+7000 9 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 7/10 || Label set size 7000: Test acc 85.37
+Max confidence value:  tensor(0.5211, device='cuda:0')
+Mean confidence value:  tensor(0.4486, device='cuda:0')
+Labeled classified:  0.030714285714285715
+Unlabeled classified:  0.982
+Total classified:  0.5902941176470589
+8000 9 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 8/10 || Label set size 8000: Test acc 86.46
+Max confidence value:  tensor(0.4681, device='cuda:0')
+Mean confidence value:  tensor(0.4555, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5555555555555556
+9000 9 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 9/10 || Label set size 9000: Test acc 87.25
+Max confidence value:  tensor(0.5029, device='cuda:0')
+Mean confidence value:  tensor(0.4522, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  0.9997
+Total classified:  0.5261578947368422
+10000 8 49994
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 10/10 || Label set size 10000: Test acc 88.12
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 1/10 || Label set size 1000: Test acc 50.16
+Max confidence value:  tensor(0.5973, device='cuda:0')
+Mean confidence value:  tensor(0.4726, device='cuda:0')
+Labeled classified:  0.316
+Unlabeled classified:  0.7618
+Total classified:  0.7212727272727273
+2000 4 49992
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 2/10 || Label set size 2000: Test acc 52.4
+Max confidence value:  tensor(0.5133, device='cuda:0')
+Mean confidence value:  tensor(0.4539, device='cuda:0')
+Labeled classified:  0.0005
+Unlabeled classified:  0.9979
+Total classified:  0.8316666666666667
+3000 4 49992
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 3/10 || Label set size 3000: Test acc 64.79
+Max confidence value:  tensor(0.4825, device='cuda:0')
+Mean confidence value:  tensor(0.4490, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7692307692307693
+4000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 4/10 || Label set size 4000: Test acc 72.19
+Max confidence value:  tensor(0.4988, device='cuda:0')
+Mean confidence value:  tensor(0.4532, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7142857142857143
+5000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 5/10 || Label set size 5000: Test acc 80.53
+Max confidence value:  tensor(0.5054, device='cuda:0')
+Mean confidence value:  tensor(0.4429, device='cuda:0')
+Labeled classified:  0.0002
+Unlabeled classified:  0.9998
+Total classified:  0.6666
+6000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 6/10 || Label set size 6000: Test acc 77.22
+Max confidence value:  tensor(0.5195, device='cuda:0')
+Mean confidence value:  tensor(0.4508, device='cuda:0')
+Labeled classified:  0.0031666666666666666
+Unlabeled classified:  0.9983
+Total classified:  0.625125
+7000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 7/10 || Label set size 7000: Test acc 82.37
+Max confidence value:  tensor(0.4826, device='cuda:0')
+Mean confidence value:  tensor(0.4529, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5882352941176471
+8000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 8/10 || Label set size 8000: Test acc 86.57
+Max confidence value:  tensor(0.5056, device='cuda:0')
+Mean confidence value:  tensor(0.4506, device='cuda:0')
+Labeled classified:  0.002
+Unlabeled classified:  0.9991
+Total classified:  0.5559444444444445
+9000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 9/10 || Label set size 9000: Test acc 88.71
+Max confidence value:  tensor(0.4578, device='cuda:0')
+Mean confidence value:  tensor(0.4546, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5263157894736842
+10000 4 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 10/10 || Label set size 10000: Test acc 88.8
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 1/10 || Label set size 1000: Test acc 44.26
+Max confidence value:  tensor(0.5358, device='cuda:0')
+Mean confidence value:  tensor(0.4184, device='cuda:0')
+Labeled classified:  0.017
+Unlabeled classified:  0.989
+Total classified:  0.9006363636363637
+2000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 2/10 || Label set size 2000: Test acc 58.79
+Max confidence value:  tensor(0.4647, device='cuda:0')
+Mean confidence value:  tensor(0.4444, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.8333333333333334
+3000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 3/10 || Label set size 3000: Test acc 65.35
+Max confidence value:  tensor(0.5194, device='cuda:0')
+Mean confidence value:  tensor(0.4741, device='cuda:0')
+Labeled classified:  0.051666666666666666
+Unlabeled classified:  0.9326
+Total classified:  0.7293076923076923
+4000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 4/10 || Label set size 4000: Test acc 75.74
+Max confidence value:  tensor(0.4592, device='cuda:0')
+Mean confidence value:  tensor(0.4563, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7142857142857143
+5000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 5/10 || Label set size 5000: Test acc 80.37
+Max confidence value:  tensor(0.4681, device='cuda:0')
+Mean confidence value:  tensor(0.4485, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.6666666666666666
+6000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 6/10 || Label set size 6000: Test acc 82.61
+Max confidence value:  tensor(0.4805, device='cuda:0')
+Mean confidence value:  tensor(0.4518, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.625
+7000 14 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 7/10 || Label set size 7000: Test acc 84.13
+Max confidence value:  tensor(0.5098, device='cuda:0')
+Mean confidence value:  tensor(0.4492, device='cuda:0')
+Labeled classified:  0.003142857142857143
+Unlabeled classified:  0.9975
+Total classified:  0.5880588235294117
+8000 9 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 8/10 || Label set size 8000: Test acc 86.47
+Max confidence value:  tensor(0.4770, device='cuda:0')
+Mean confidence value:  tensor(0.4570, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5555555555555556
+9000 9 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 9/10 || Label set size 9000: Test acc 87.04
+Max confidence value:  tensor(0.5021, device='cuda:0')
+Mean confidence value:  tensor(0.4562, device='cuda:0')
+Labeled classified:  0.00011111111111111112
+Unlabeled classified:  0.9998
+Total classified:  0.5262631578947369
+10000 9 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 10/10 || Label set size 10000: Test acc 88.05
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 1/10 || Label set size 1000: Test acc 46.83
+Max confidence value:  tensor(0.5028, device='cuda:0')
+Mean confidence value:  tensor(0.4495, device='cuda:0')
+Labeled classified:  0.001
+Unlabeled classified:  1.0
+Total classified:  0.9091818181818182
+2000 17 49959
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 2/10 || Label set size 2000: Test acc 53.41
+Max confidence value:  tensor(0.5380, device='cuda:0')
+Mean confidence value:  tensor(0.4405, device='cuda:0')
+Labeled classified:  0.031
+Unlabeled classified:  0.9812
+Total classified:  0.8228333333333333
+3000 17 49965
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 3/10 || Label set size 3000: Test acc 70.46
+Max confidence value:  tensor(0.5482, device='cuda:0')
+Mean confidence value:  tensor(0.4652, device='cuda:0')
+Labeled classified:  0.10866666666666666
+Unlabeled classified:  0.867
+Total classified:  0.692
+4000 13 49991
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 4/10 || Label set size 4000: Test acc 74.06
+Max confidence value:  tensor(0.4594, device='cuda:0')
+Mean confidence value:  tensor(0.4515, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7142857142857143
+5000 13 49991
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 5/10 || Label set size 5000: Test acc 76.6
+Max confidence value:  tensor(0.5356, device='cuda:0')
+Mean confidence value:  tensor(0.4563, device='cuda:0')
+Labeled classified:  0.0578
+Unlabeled classified:  0.969
+Total classified:  0.6652666666666667
+6000 13 49991
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 6/10 || Label set size 6000: Test acc 82.63
+Max confidence value:  tensor(0.5349, device='cuda:0')
+Mean confidence value:  tensor(0.4403, device='cuda:0')
+Labeled classified:  0.0405
+Unlabeled classified:  0.9735
+Total classified:  0.623625
+7000 13 49991
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 7/10 || Label set size 7000: Test acc 85.92
+Max confidence value:  tensor(0.4614, device='cuda:0')
+Mean confidence value:  tensor(0.4583, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5882352941176471
+8000 9 49991
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 8/10 || Label set size 8000: Test acc 85.91
+Max confidence value:  tensor(0.4679, device='cuda:0')
+Mean confidence value:  tensor(0.4537, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5555555555555556
+9000 9 49998
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 9/10 || Label set size 9000: Test acc 87.23
+Max confidence value:  tensor(0.5007, device='cuda:0')
+Mean confidence value:  tensor(0.4572, device='cuda:0')
+Labeled classified:  0.00011111111111111112
+Unlabeled classified:  1.0
+Total classified:  0.5263684210526316
+10000 9 49998
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 10/10 || Label set size 10000: Test acc 88.71
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 1/10 || Label set size 1000: Test acc 49.98
+Max confidence value:  tensor(0.5191, device='cuda:0')
+Mean confidence value:  tensor(0.4328, device='cuda:0')
+Labeled classified:  0.006
+Unlabeled classified:  0.9956
+Total classified:  0.9056363636363637
+2000 3 49966
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 2/10 || Label set size 2000: Test acc 56.85
+Max confidence value:  tensor(0.5420, device='cuda:0')
+Mean confidence value:  tensor(0.4353, device='cuda:0')
+Labeled classified:  0.0185
+Unlabeled classified:  0.9847
+Total classified:  0.8236666666666667
+3000 3 49966
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 3/10 || Label set size 3000: Test acc 72.45
+Max confidence value:  tensor(0.4990, device='cuda:0')
+Mean confidence value:  tensor(0.4824, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7692307692307693
+4000 3 49991
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 4/10 || Label set size 4000: Test acc 75.22
+Max confidence value:  tensor(0.4693, device='cuda:0')
+Mean confidence value:  tensor(0.4492, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.7142857142857143
+5000 3 49991
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 5/10 || Label set size 5000: Test acc 82.44
+Max confidence value:  tensor(0.5434, device='cuda:0')
+Mean confidence value:  tensor(0.4581, device='cuda:0')
+Labeled classified:  0.0134
+Unlabeled classified:  0.9762
+Total classified:  0.6552666666666667
+6000 3 49991
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 6/10 || Label set size 6000: Test acc 83.45
+Max confidence value:  tensor(0.5211, device='cuda:0')
+Mean confidence value:  tensor(0.4582, device='cuda:0')
+Labeled classified:  0.030166666666666668
+Unlabeled classified:  0.9853
+Total classified:  0.627125
+7000 3 49991
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 7/10 || Label set size 7000: Test acc 86.14
+Max confidence value:  tensor(0.5050, device='cuda:0')
+Mean confidence value:  tensor(0.4594, device='cuda:0')
+Labeled classified:  0.0024285714285714284
+Unlabeled classified:  0.9985
+Total classified:  0.5883529411764706
+8000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 8/10 || Label set size 8000: Test acc 86.87
+Max confidence value:  tensor(0.5162, device='cuda:0')
+Mean confidence value:  tensor(0.4541, device='cuda:0')
+Labeled classified:  0.001125
+Unlabeled classified:  0.9929
+Total classified:  0.5521111111111111
+9000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 9/10 || Label set size 9000: Test acc 87.94
+Max confidence value:  tensor(0.5086, device='cuda:0')
+Mean confidence value:  tensor(0.4512, device='cuda:0')
+Labeled classified:  0.0028888888888888888
+Unlabeled classified:  0.9989
+Total classified:  0.5271052631578947
+10000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 10/10 || Label set size 10000: Test acc 88.73
+Finished.
