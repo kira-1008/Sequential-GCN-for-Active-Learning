@@ -65,10 +65,11 @@ if __name__ == '__main__':
     method_type: 'Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL'
     '''
     name='results_'+str(args.method_type)+"_"+args.dataset +'_main'+str(args.cycles)+"_layers"+str(args.num_layers)+'_normmode'+args.norm_mode
-    results = open(name+'.txt','w')
+    results = open('results/'+name+'.txt','w')
     result={}
     print("Dataset: %s"%args.dataset)
     print("Method type:%s"%method)
+    print("Layers :%s"%args.num_layers)
     if args.total:
         TRIALS = 1
         CYCLES = 1
@@ -165,13 +166,11 @@ if __name__ == '__main__':
     for key in result.keys():
       result[key]=result[key]/TRIALS
     fig, ax = plt.subplots()
-    names, counts = zip(*dic2.items())
+    names, counts = zip(*result.items())
     ax.plot(names, counts)
     ax.scatter(names,counts)
 
     for i, txt in enumerate(counts):
        ax.annotate(txt, (names[i], counts[i]))
-    plt.savefig('Images/{}'.format(name))
-    plt.plot(keys,accuracy)
     plt.savefig("Images/{}".format(name))
     

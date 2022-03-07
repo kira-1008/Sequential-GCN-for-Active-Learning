@@ -1,8 +1,8 @@
 #!/bin/bash
 #SBATCH -N 1
-#SBATCH --job-name=cifar100
-#SBATCH --error=cifar100_6layer_pn_uncertaingcn.%J.err
-#SBATCH --output=cifar100_6layer_pn_uncertaingcn.%J.out
+#SBATCH --job-name=cifar10_2layer
+#SBATCH --error=cifar10_2layer_base_coregcn.%J.err
+#SBATCH --output=cifar10_2layer_base_coregcn.%J.out
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:1
 
@@ -12,7 +12,7 @@ module load cuda/10.0
 module load cuDNN/cuda_9.2_7.2.1
 
 source activate baseline 
-python main.py -m UncertainGCN -d cifar100 -c 10 -layers 6 --norm_mode PN
+python main.py -m CoreGCN -d cifar10 -c 10 -layers 2 
 
 source deactivate
 

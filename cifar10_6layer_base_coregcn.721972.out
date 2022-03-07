@@ -1,0 +1,638 @@
+==========================================
+SLURM_CLUSTER_NAME = param-shivay
+SLURM_JOB_ACCOUNT = comp_sci_engg
+SLURM_JOB_ID = 721972
+SLURM_JOB_NAME = cifar10_6layer
+SLURM_JOB_NODELIST = gpu010
+SLURM_JOB_USER = tulika.mishra.cse19.iitbhu
+SLURM_JOB_UID = 5483
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 8503
+SLURM_SUBMIT_DIR = /home/tulika.mishra.cse19.iitbhu/btp/Sequential-GCN-for-Active-Learning
+SLURM_CPUS_ON_NODE = 1
+SLURM_NTASKS = 
+SLURM_TASK_PID = 8503
+==========================================
+Dataset: cifar10
+Method type:CoreGCN
+Layers :6
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 1/10 || Label set size 2000: Test acc 55.44
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5963, device='cuda:0')
+Mean confidence value:  tensor(0.4434, device='cuda:0')
+Labeled classified:  0.1715
+Unlabeled classified:  0.919
+Total classified:  0.7944166666666667
+4000 39 49997
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 2/10 || Label set size 4000: Test acc 76.3
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.6574, device='cuda:0')
+Mean confidence value:  tensor(0.4246, device='cuda:0')
+Labeled classified:  0.24525
+Unlabeled classified:  0.8624
+Total classified:  0.6860714285714286
+6000 9 49997
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 3/10 || Label set size 6000: Test acc 83.63
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5362, device='cuda:0')
+Mean confidence value:  tensor(0.4159, device='cuda:0')
+Labeled classified:  0.012166666666666666
+Unlabeled classified:  0.9897
+Total classified:  0.623125
+8000 0 49997
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 4/10 || Label set size 8000: Test acc 86.2
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5125, device='cuda:0')
+Mean confidence value:  tensor(0.4721, device='cuda:0')
+Labeled classified:  0.02775
+Unlabeled classified:  0.9699
+Total classified:  0.5511666666666667
+10000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 5/10 || Label set size 10000: Test acc 89.23
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.4673, device='cuda:0')
+Mean confidence value:  tensor(0.4499, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5
+12000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 6/10 || Label set size 12000: Test acc 90.58
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4797, device='cuda:0')
+Mean confidence value:  tensor(0.4549, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.45454545454545453
+14000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 7/10 || Label set size 14000: Test acc 91.53
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5378, device='cuda:0')
+Mean confidence value:  tensor(0.4449, device='cuda:0')
+Labeled classified:  0.026071428571428572
+Unlabeled classified:  0.9595
+Total classified:  0.415
+16000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 8/10 || Label set size 16000: Test acc 92.26
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.6012, device='cuda:0')
+Mean confidence value:  tensor(0.4813, device='cuda:0')
+Labeled classified:  0.454625
+Unlabeled classified:  0.6538
+Total classified:  0.5312307692307693
+18000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 9/10 || Label set size 18000: Test acc 93.19
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5895, device='cuda:0')
+Mean confidence value:  tensor(0.4787, device='cuda:0')
+Labeled classified:  0.40455555555555556
+Unlabeled classified:  0.7241
+Total classified:  0.5186785714285714
+20000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 10/10 || Label set size 20000: Test acc 93.64
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 1/10 || Label set size 2000: Test acc 58.69
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5788, device='cuda:0')
+Mean confidence value:  tensor(0.4252, device='cuda:0')
+Labeled classified:  0.151
+Unlabeled classified:  0.9179
+Total classified:  0.7900833333333334
+4000 6 49995
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 2/10 || Label set size 4000: Test acc 71.02
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5891, device='cuda:0')
+Mean confidence value:  tensor(0.4229, device='cuda:0')
+Labeled classified:  0.15925
+Unlabeled classified:  0.8946
+Total classified:  0.6845
+6000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 3/10 || Label set size 6000: Test acc 81.72
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.5809, device='cuda:0')
+Mean confidence value:  tensor(0.4759, device='cuda:0')
+Labeled classified:  0.3725
+Unlabeled classified:  0.7148
+Total classified:  0.5864375
+8000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 4/10 || Label set size 8000: Test acc 85.51
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5270, device='cuda:0')
+Mean confidence value:  tensor(0.4784, device='cuda:0')
+Labeled classified:  0.113375
+Unlabeled classified:  0.9062
+Total classified:  0.5538333333333333
+10000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 5/10 || Label set size 10000: Test acc 88.85
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4717, device='cuda:0')
+Mean confidence value:  tensor(0.4389, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5
+12000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 6/10 || Label set size 12000: Test acc 91.02
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5350, device='cuda:0')
+Mean confidence value:  tensor(0.4628, device='cuda:0')
+Labeled classified:  0.03833333333333333
+Unlabeled classified:  0.9451
+Total classified:  0.4505
+14000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 7/10 || Label set size 14000: Test acc 91.42
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5514, device='cuda:0')
+Mean confidence value:  tensor(0.4614, device='cuda:0')
+Labeled classified:  0.12242857142857143
+Unlabeled classified:  0.8819
+Total classified:  0.438875
+16000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 8/10 || Label set size 16000: Test acc 92.91
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4990, device='cuda:0')
+Mean confidence value:  tensor(0.4468, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.38461538461538464
+18000 2 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 9/10 || Label set size 18000: Test acc 93.13
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5052, device='cuda:0')
+Mean confidence value:  tensor(0.4309, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  0.9999
+Total classified:  0.35710714285714285
+20000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 2/5 || Cycle 10/10 || Label set size 20000: Test acc 93.76
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 1/10 || Label set size 2000: Test acc 58.19
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.6224, device='cuda:0')
+Mean confidence value:  tensor(0.5095, device='cuda:0')
+Labeled classified:  0.7775
+Unlabeled classified:  0.4315
+Total classified:  0.4891666666666667
+4000 3 49971
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 2/10 || Label set size 4000: Test acc 75.31
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5575, device='cuda:0')
+Mean confidence value:  tensor(0.5022, device='cuda:0')
+Labeled classified:  0.729
+Unlabeled classified:  0.4769
+Total classified:  0.5489285714285714
+6000 3 49990
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 3/10 || Label set size 6000: Test acc 82.52
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5531, device='cuda:0')
+Mean confidence value:  tensor(0.4495, device='cuda:0')
+Labeled classified:  0.135
+Unlabeled classified:  0.8834
+Total classified:  0.60275
+8000 3 49995
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 4/10 || Label set size 8000: Test acc 86.75
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.5168, device='cuda:0')
+Mean confidence value:  tensor(0.4694, device='cuda:0')
+Labeled classified:  0.080625
+Unlabeled classified:  0.9326
+Total classified:  0.5539444444444445
+10000 3 49997
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 5/10 || Label set size 10000: Test acc 88.71
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4867, device='cuda:0')
+Mean confidence value:  tensor(0.4599, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5
+12000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 6/10 || Label set size 12000: Test acc 90.22
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4647, device='cuda:0')
+Mean confidence value:  tensor(0.4564, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.45454545454545453
+14000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 7/10 || Label set size 14000: Test acc 91.81
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5234, device='cuda:0')
+Mean confidence value:  tensor(0.4627, device='cuda:0')
+Labeled classified:  0.0495
+Unlabeled classified:  0.9351
+Total classified:  0.4185
+16000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 8/10 || Label set size 16000: Test acc 92.26
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5276, device='cuda:0')
+Mean confidence value:  tensor(0.4308, device='cuda:0')
+Labeled classified:  0.0070625
+Unlabeled classified:  0.983
+Total classified:  0.3824230769230769
+18000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 9/10 || Label set size 18000: Test acc 92.89
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5790, device='cuda:0')
+Mean confidence value:  tensor(0.4472, device='cuda:0')
+Labeled classified:  0.16766666666666666
+Unlabeled classified:  0.8887
+Total classified:  0.4251785714285714
+20000 3 49999
+>> Train a Model.
+>> Finished.
+Trial 3/5 || Cycle 10/10 || Label set size 20000: Test acc 93.42
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 1/10 || Label set size 2000: Test acc 56.84
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.6287, device='cuda:0')
+Mean confidence value:  tensor(0.4853, device='cuda:0')
+Labeled classified:  0.518
+Unlabeled classified:  0.6719
+Total classified:  0.64625
+4000 9 49975
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 2/10 || Label set size 4000: Test acc 73.67
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.6411, device='cuda:0')
+Mean confidence value:  tensor(0.5089, device='cuda:0')
+Labeled classified:  0.74575
+Unlabeled classified:  0.4721
+Total classified:  0.5502857142857143
+6000 9 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 3/10 || Label set size 6000: Test acc 84.03
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4880, device='cuda:0')
+Mean confidence value:  tensor(0.4353, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.625
+8000 9 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 4/10 || Label set size 8000: Test acc 86.78
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5078, device='cuda:0')
+Mean confidence value:  tensor(0.4615, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  0.9954
+Total classified:  0.553
+10000 6 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 5/10 || Label set size 10000: Test acc 88.98
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5186, device='cuda:0')
+Mean confidence value:  tensor(0.4548, device='cuda:0')
+Labeled classified:  0.0178
+Unlabeled classified:  0.9856
+Total classified:  0.5017
+12000 6 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 6/10 || Label set size 12000: Test acc 90.57
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4965, device='cuda:0')
+Mean confidence value:  tensor(0.4470, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.45454545454545453
+14000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 7/10 || Label set size 14000: Test acc 91.77
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4824, device='cuda:0')
+Mean confidence value:  tensor(0.4443, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.4166666666666667
+16000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 8/10 || Label set size 16000: Test acc 92.1
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5058, device='cuda:0')
+Mean confidence value:  tensor(0.4293, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  0.9994
+Total classified:  0.3843846153846154
+18000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 9/10 || Label set size 18000: Test acc 93.22
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5223, device='cuda:0')
+Mean confidence value:  tensor(0.4266, device='cuda:0')
+Labeled classified:  0.00811111111111111
+Unlabeled classified:  0.9886
+Total classified:  0.35828571428571426
+20000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 4/5 || Cycle 10/10 || Label set size 20000: Test acc 93.12
+Finished.
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 1/10 || Label set size 2000: Test acc 54.84
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5135, device='cuda:0')
+Mean confidence value:  tensor(0.3354, device='cuda:0')
+Labeled classified:  0.0015
+Unlabeled classified:  0.9993
+Total classified:  0.833
+4000 1 49990
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 2/10 || Label set size 4000: Test acc 77.48
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.01
+Max confidence value:  tensor(0.5236, device='cuda:0')
+Mean confidence value:  tensor(0.3390, device='cuda:0')
+Labeled classified:  0.002
+Unlabeled classified:  0.9987
+Total classified:  0.7139285714285715
+6000 1 49990
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 3/10 || Label set size 6000: Test acc 83.03
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5489, device='cuda:0')
+Mean confidence value:  tensor(0.4530, device='cuda:0')
+Labeled classified:  0.11083333333333334
+Unlabeled classified:  0.9092
+Total classified:  0.6098125
+8000 1 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 4/10 || Label set size 8000: Test acc 87.26
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4807, device='cuda:0')
+Mean confidence value:  tensor(0.4521, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5555555555555556
+10000 1 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 5/10 || Label set size 10000: Test acc 89.76
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4944, device='cuda:0')
+Mean confidence value:  tensor(0.4629, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.5
+12000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 6/10 || Label set size 12000: Test acc 90.24
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5073, device='cuda:0')
+Mean confidence value:  tensor(0.4855, device='cuda:0')
+Labeled classified:  0.047
+Unlabeled classified:  0.9442
+Total classified:  0.45481818181818184
+14000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 7/10 || Label set size 14000: Test acc 91.42
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5195, device='cuda:0')
+Mean confidence value:  tensor(0.4384, device='cuda:0')
+Labeled classified:  0.0012857142857142856
+Unlabeled classified:  0.9938
+Total classified:  0.41483333333333333
+16000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 8/10 || Label set size 16000: Test acc 92.18
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.4983, device='cuda:0')
+Mean confidence value:  tensor(0.4344, device='cuda:0')
+Labeled classified:  0.0
+Unlabeled classified:  1.0
+Total classified:  0.38461538461538464
+18000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 9/10 || Label set size 18000: Test acc 92.93
+Getting transformed features...
+Calculating distances...
+Using flat_X as features.
+Maximum distance from cluster centers is 0.00
+Max confidence value:  tensor(0.5380, device='cuda:0')
+Mean confidence value:  tensor(0.4540, device='cuda:0')
+Labeled classified:  0.07377777777777778
+Unlabeled classified:  0.9296
+Total classified:  0.37942857142857145
+20000 0 49999
+>> Train a Model.
+>> Finished.
+Trial 5/5 || Cycle 10/10 || Label set size 20000: Test acc 93.26
+Finished.
