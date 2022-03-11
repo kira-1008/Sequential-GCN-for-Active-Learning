@@ -12,7 +12,7 @@ module load cuda/10.0
 module load cuDNN/cuda_9.2_7.2.1
 
 source activate baseline 
-python main.py -m CoreGCN -d cifar10 -c 10 -layers 2 
+python main.py -m CoreGCN -d cifar10 -c 10 -layers 2
 
 source deactivate
 

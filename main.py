@@ -165,6 +165,7 @@ if __name__ == '__main__':
     results.close()
     for key in result.keys():
       result[key]=result[key]/TRIALS
+      result[key]=round(result[key],3)
     fig, ax = plt.subplots()
     names, counts = zip(*result.items())
     ax.plot(names, counts)
