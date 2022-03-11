@@ -15,6 +15,8 @@ from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as T
 import torchvision.models as models
 import argparse
+import matplotlib
+import matplotlib.pyplot as plt
 # Custom
 import models.resnet as resnet
 from models.resnet import vgg11
@@ -62,7 +64,9 @@ if __name__ == '__main__':
     '''
     method_type: 'Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL'
     '''
-    results = open('results_'+str(args.method_type)+"_"+args.dataset +'_main'+str(args.cycles)+str(args.total)+'.txt','w')
+    name='results_'+str(args.method_type)+"_"+args.dataset+'_main'+str(args.cycles)+'_layers'+str(args.num_layers)+'_gcnii'
+    results = open('results/'+name+'.txt','w')
+    result={}
     print("Dataset: %s"%args.dataset)
     print("Method type:%s"%method)
     if args.total:
@@ -135,6 +139,10 @@ if __name__ == '__main__':
             print('Trial {}/{} || Cycle {}/{} || Label set size {}: Test acc {}'.format(trial+1, TRIALS, cycle+1, CYCLES, len(labeled_set), acc))
             np.array([method, trial+1, TRIALS, cycle+1, CYCLES, len(labeled_set), acc]).tofile(results, sep=" ")
             results.write("\n")
+            if trial==0:
+                result=[str(len(labeled_set))]=acc
+            else:
+                result[str(len(labeled_set))]+=acc
 
 
             if cycle == (CYCLES-1):
@@ -155,3 +163,14 @@ if __name__ == '__main__':
                                             pin_memory=True)
 
     results.close()
+    for key in result.keys():
+       result[key]=result[key]/TRIALS
+       result[key]=round(result[key],3)
+    fix,ax=plt.subplots()
+    names, counts = zip(*result.items()))
+    ax.plot(names,counts)
+    ax.scatter(names,counts)
+    
+    for i,txt in enumerate(counts):
+      ax.annotate(txt,(names[i],counts[i]))
+    plt.savefig("Images/{}".format(name))
