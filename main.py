@@ -14,9 +14,9 @@ import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as T
 import torchvision.models as models
-import argparse
 import matplotlib
 import matplotlib.pyplot as plt
+import argparse
 # Custom
 import models.resnet as resnet
 from models.resnet import vgg11
@@ -69,6 +69,7 @@ if __name__ == '__main__':
     result={}
     print("Dataset: %s"%args.dataset)
     print("Method type:%s"%method)
+    print("Layers :%s"%args.num_layers)
     if args.total:
         TRIALS = 1
         CYCLES = 1
@@ -140,10 +141,9 @@ if __name__ == '__main__':
             np.array([method, trial+1, TRIALS, cycle+1, CYCLES, len(labeled_set), acc]).tofile(results, sep=" ")
             results.write("\n")
             if trial==0:
-                result=[str(len(labeled_set))]=acc
+              result[str(len(labeled_set))]=acc
             else:
-                result[str(len(labeled_set))]+=acc
-
+              result[str(len(labeled_set))]+=acc
 
             if cycle == (CYCLES-1):
                 # Reached final training cycle
@@ -173,4 +173,5 @@ if __name__ == '__main__':
     
     for i,txt in enumerate(counts):
       ax.annotate(txt,(names[i],counts[i]))
+      
     plt.savefig("Images/{}".format(name))
