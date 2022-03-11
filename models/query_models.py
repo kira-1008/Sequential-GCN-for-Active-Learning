@@ -48,11 +48,17 @@ class GraphConvolution(Module):
     Simple GCN layer, similar to https://arxiv.org/abs/1609.02907
     """
 
-    def __init__(self, in_features, out_features, bias=True):
+    def __init__(self, in_features, out_features, bias=False, residual=False, variant=False):
         super(GraphConvolution, self).__init__()
-        self.in_features = in_features
+        self.variant = variant
+        if self.variant:
+            self.in_features = 2*in_features 
+        else:
+            self.in_features = in_features
+
         self.out_features = out_features
-        self.weight = Parameter(torch.FloatTensor(in_features, out_features))
+        self.residual = residual
+        self.weight = Parameter(torch.FloatTensor(self.in_features,self.out_features))
         if bias:
             self.bias = Parameter(torch.FloatTensor(out_features))
         else:
@@ -60,14 +66,23 @@ class GraphConvolution(Module):
         self.reset_parameters()
 
     def reset_parameters(self):
-        stdv = 1. / math.sqrt(self.weight.size(1))
+        stdv = 1. / math.sqrt(self.out_features)
         self.weight.data.uniform_(-stdv, stdv)
         if self.bias is not None:
             self.bias.data.uniform_(-stdv, stdv)
 
-    def forward(self, input, adj):
-        support = torch.mm(input, self.weight)
-        output = torch.spmm(adj, support)
+    def forward(self, input, adj, h0 , lamda, alpha, l):
+        theta = math.log(lamda/l+1)
+        hi = torch.spmm(adj, input)
+        if self.variant:
+            support = torch.cat([hi,h0],1)
+            r = (1-alpha)*hi+alpha*h0
+        else:
+            support = (1-alpha)*hi+alpha*h0
+            r = support
+        output = theta*torch.mm(support, self.weight)+(1-theta)*r
+        if self.residual:
+            output = output+input
         if self.bias is not None:
             return output + self.bias
         else:
@@ -79,26 +94,37 @@ class GraphConvolution(Module):
                + str(self.out_features) + ')'
 
 class GCN(nn.Module):
-    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1):
+    def __init__(self, nfeat, nhid, nclass, dropout, lamda, alpha, variant,nlayer=1):
         super(GCN, self).__init__()
 
         assert nlayer >= 1 
-        self.hidden_layers = nn.ModuleList([
-            GraphConvolution(nfeat if i==0 else nhid, nhid) 
-            for i in range(nlayer-1)
-        ])
-        self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
+        self.convs = nn.ModuleList()
+        for _ in range(nlayer):
+            self.convs.append(GraphConvolution(nhid, nhid,variant=variant))
+        self.fcs = nn.ModuleList()
+        self.fcs.append(nn.Linear(nfeat, nhid))
+        self.fcs.append(nn.Linear(nhid, nclass))
+        self.params1 = list(self.convs.parameters())
+        self.params2 = list(self.fcs.parameters())
+        self.act_fn = nn.ReLU()
         self.dropout = dropout
+        self.alpha = alpha
+        self.lamda = lamda
         self.linear = nn.Linear(nclass, 1)
 
     def forward(self, x, adj):
-        for i, layer in enumerate(self.hidden_layers):
-            x = layer(x, adj)
-            feat=F.dropout(x, self.dropout, training=self.training)
-        x = self.out_layer(x, adj)
-        #x = self.linear(x)
-        # x = F.softmax(x, dim=1)
-        return torch.sigmoid(x), feat, torch.cat((feat,x),1)
+        _layers = []
+        x = F.dropout(x, self.dropout, training=self.training)
+        layer_inner = self.act_fn(self.fcs[0](x))
+        _layers.append(layer_inner)
+        for i,con in enumerate(self.convs):
+            layer_inner = F.dropout(layer_inner, self.dropout, training=self.training)
+            layer_inner = self.act_fn(con(layer_inner,adj,_layers[0],self.lamda,self.alpha,i+1))
+        layer_inner = F.dropout(layer_inner, self.dropout, training=self.training)
+        feat=layer_inner
+        layer_inner = self.fcs[-1](layer_inner)
+        return torch.sigmoid(layer_inner),feat,torch.cat((feat,layer_inner),1)
+      
 
 class View(nn.Module):
     def __init__(self, size):

@@ -218,7 +218,9 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
         gcn_module = GCN(nfeat=features.shape[1],
                          nhid=args.hidden_units,
                          nclass=1,
-                         dropout=args.dropout_rate,nlayer=args.num_layers).cuda()
+                         dropout=args.dropout_rate,nlayer=args.num_layers,lamda = args.lamda, 
+                alpha=args.alpha,
+                variant=args.variant).cuda()
                                 
         models      = {'gcn_module': gcn_module}
 
@@ -229,7 +231,7 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
         nlbl = np.arange(0, SUBSET, 1)
         
         ############
-        for _ in range(200):
+        for _ in range(1500):
 
             optimizers['gcn_module'].zero_grad()
             outputs, _, _ = models['gcn_module'](features, adj)

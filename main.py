@@ -45,6 +45,9 @@ parser.add_argument("-c","--cycles", type=int, default=5,
 parser.add_argument("-t","--total", type=bool, default=False,
                     help="Training on the entire dataset")
 parser.add_argument("-layers","--num_layers",type=int,default=2,help="Number of layers in the GCN")
+parser.add_argument('--alpha', type=float, default=0.1, help='alpha_l')
+parser.add_argument('--lamda', type=float, default=0.5, help='lamda.')
+parser.add_argument('--variant', action='store_true', default=False, help='GCN* model.')
 args = parser.parse_args()
 
 ##
