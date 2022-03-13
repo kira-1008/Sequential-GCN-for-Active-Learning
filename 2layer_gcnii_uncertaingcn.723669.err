@@ -1,0 +1,5 @@
+  File "main.py", line 170
+    names, counts = zip(*result.items()))
+                                        ^
+SyntaxError: invalid syntax
+DeprecationWarning: 'source deactivate' is deprecated. Use 'conda deactivate'.
