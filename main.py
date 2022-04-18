@@ -167,7 +167,8 @@ if __name__ == '__main__':
        result[key]=result[key]/TRIALS
        result[key]=round(result[key],3)
     fix,ax=plt.subplots()
-    names, counts = zip(*result.items()))
+    names = list(result.keys())
+    counts=list(result.values())
     ax.plot(names,counts)
     ax.scatter(names,counts)
     

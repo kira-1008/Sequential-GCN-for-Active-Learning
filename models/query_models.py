@@ -48,7 +48,7 @@ class GraphConvolution(Module):
     Simple GCN layer, similar to https://arxiv.org/abs/1609.02907
     """
 
-    def __init__(self, in_features, out_features, bias=False, residual=False, variant=False):
+    def __init__(self, in_features, out_features, residual=False, variant=False):
         super(GraphConvolution, self).__init__()
         self.variant = variant
         if self.variant:
@@ -59,17 +59,11 @@ class GraphConvolution(Module):
         self.out_features = out_features
         self.residual = residual
         self.weight = Parameter(torch.FloatTensor(self.in_features,self.out_features))
-        if bias:
-            self.bias = Parameter(torch.FloatTensor(out_features))
-        else:
-            self.register_parameter('bias', None)
         self.reset_parameters()
 
     def reset_parameters(self):
         stdv = 1. / math.sqrt(self.out_features)
         self.weight.data.uniform_(-stdv, stdv)
-        if self.bias is not None:
-            self.bias.data.uniform_(-stdv, stdv)
 
     def forward(self, input, adj, h0 , lamda, alpha, l):
         theta = math.log(lamda/l+1)
@@ -83,10 +77,7 @@ class GraphConvolution(Module):
         output = theta*torch.mm(support, self.weight)+(1-theta)*r
         if self.residual:
             output = output+input
-        if self.bias is not None:
-            return output + self.bias
-        else:
-            return output
+        return output
 
     def __repr__(self):
         return self.__class__.__name__ + ' (' \
@@ -110,7 +101,6 @@ class GCN(nn.Module):
         self.dropout = dropout
         self.alpha = alpha
         self.lamda = lamda
-        self.linear = nn.Linear(nclass, 1)
 
     def forward(self, x, adj):
         _layers = []
@@ -123,7 +113,7 @@ class GCN(nn.Module):
         layer_inner = F.dropout(layer_inner, self.dropout, training=self.training)
         feat=layer_inner
         layer_inner = self.fcs[-1](layer_inner)
-        return torch.sigmoid(layer_inner),feat,torch.cat((feat,layer_inner),1)
+        return F.log_softmax(layer_inner,dim=1),feat,torch.cat((feat,layer_inner),1)
       
 
 class View(nn.Module):
