@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np 
 
 class PairNorm(nn.Module):
-    def __init__(self, mode='PN', scale=1):
+    def __init__(self,adj, mode='PN', scale=1):
         """
             mode:
               'None' : No normalization 
@@ -19,6 +19,7 @@ class PairNorm(nn.Module):
         super(PairNorm, self).__init__()
         self.mode = mode
         self.scale = scale
+        self.adj = adj
 
         # Scale can be set based on origina data, and also the current feature lengths.
         # We leave the experiments to future. A good pool we used for choosing scale:
@@ -28,7 +29,8 @@ class PairNorm(nn.Module):
         if self.mode == 'None':
             return x
         
-        col_mean = x.mean(dim=0)      
+        col_mean = x.mean(dim=0)
+        rowsum = torch.sum(self.adj,dim=0).sqrt()      
         if self.mode == 'PN':
             x = x - col_mean
             rownorm_mean = (1e-6 + x.pow(2).sum(dim=1).mean()).sqrt() 
@@ -38,6 +40,7 @@ class PairNorm(nn.Module):
             x = x - col_mean
             rownorm_individual = (1e-6 + x.pow(2).sum(dim=1, keepdim=True)).sqrt()
             x = self.scale * x / rownorm_individual
+            x = x/rowsum[:,None]
 
         if self.mode == 'PN-SCS':
             rownorm_individual = (1e-6 + x.pow(2).sum(dim=1, keepdim=True)).sqrt()

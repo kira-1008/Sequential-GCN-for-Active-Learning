@@ -1,0 +1,31 @@
+==========================================
+SLURM_CLUSTER_NAME = param-shivay
+SLURM_JOB_ACCOUNT = comp_sci_engg
+SLURM_JOB_ID = 741764
+SLURM_JOB_NAME = cifar10_4layer
+SLURM_JOB_NODELIST = gpu009
+SLURM_JOB_USER = tulika.mishra.cse19.iitbhu
+SLURM_JOB_UID = 5483
+SLURM_JOB_PARTITION = gpu
+SLURM_TASK_PID = 22675
+SLURM_SUBMIT_DIR = /home/tulika.mishra.cse19.iitbhu/btp/Sequential-GCN-for-Active-Learning
+SLURM_CPUS_ON_NODE = 1
+SLURM_NTASKS = 
+SLURM_TASK_PID = 22675
+==========================================
+Dataset: cifar10
+Method type:UncertainGCN
+Layers :4
+Files already downloaded and verified
+Files already downloaded and verified
+Files already downloaded and verified
+>> Train a Model.
+>> Finished.
+Trial 1/5 || Cycle 1/10 || Label set size 2000: Test acc 61.02
+Max confidence value:  tensor(0.9974, device='cuda:0')
+Mean confidence value:  tensor(0.3119, device='cuda:0')
+Labeled classified:  0.8865
+Unlabeled classified:  0.7799
+Total classified:  0.7976666666666666
+4000 10 49997
+>> Train a Model.

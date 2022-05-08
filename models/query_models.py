@@ -80,7 +80,7 @@ class GraphConvolution(Module):
                + str(self.out_features) + ')'
 
 class GCN(nn.Module):
-    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1,norm_mode='None',norm_scale=1):
+    def __init__(self, nfeat, nhid, nclass, dropout,adj,nlayer=1,norm_mode='None',norm_scale=1):
         super(GCN, self).__init__()
 
         assert nlayer >= 1 
@@ -90,7 +90,7 @@ class GCN(nn.Module):
         ])
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
-        self.norm = PairNorm(norm_mode, norm_scale)
+        self.norm = PairNorm(adj,norm_mode, norm_scale)
         self.linear = nn.Linear(nclass, 1)
         self.relu = nn.ReLU(True)
 
