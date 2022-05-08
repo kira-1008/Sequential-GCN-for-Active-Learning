@@ -111,7 +111,7 @@ class GCN(nn.Module):
               vals.sort()
               vals = vals[:k]
               adj[i]=[adj[i][x] if (adj[i][x],x) in vals else 0]
-            adj_diag = np.sum(adj, axis=0) #rowise sum
+            adj_diag = np.sum(adj, axis=1) #rowise sum
             adj = np.matmul(adj, np.diag(1/adj_diag))
             adj = adj + np.eye(adj.shape[0])
             adj = torch.Tensor(adj).cuda()
