@@ -22,7 +22,12 @@ def aff_to_adj(x, y=None):
     x = x.detach().cpu().numpy()
     adj = np.matmul(x, x.transpose())
     adj +=  -1.0*np.eye(adj.shape[0])
-    adj_diag = np.sum(adj, axis=0) #rowise sum
+    for i in range(0,n):
+        vals=[(adj[i][x],x) for x in range(0,n)]
+        vals.sort()
+        vals = vals[:k]
+        adj[i]=[adj[i][x] if (adj[i][x],x) in vals else 0]
+    adj_diag = np.sum(adj, axis=1) #rowise sum
     adj = np.matmul(adj, np.diag(1/adj_diag))
     adj = adj + np.eye(adj.shape[0])
     adj = torch.Tensor(adj).cuda()
