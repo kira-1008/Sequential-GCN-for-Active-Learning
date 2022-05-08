@@ -6,6 +6,7 @@ import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 from torch.nn.modules.module import Module
 from .layers import PairNorm
+import numpy as np
 
 
 class LossNet(nn.Module):
@@ -80,7 +81,7 @@ class GraphConvolution(Module):
                + str(self.out_features) + ')'
 
 class GCN(nn.Module):
-    def __init__(self, nfeat, nhid, nclass, dropout,nlayer=1,norm_mode='None',norm_scale=1):
+    def __init__(self, nfeat, nhid, nclass, dropout,norm_scale,nlayer=1,norm_mode='None'):
         super(GCN, self).__init__()
 
         assert nlayer >= 1 
@@ -90,17 +91,30 @@ class GCN(nn.Module):
         ])
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
-        self.norm = PairNorm(norm_mode, norm_scale)
+        self.norm = PairNorm("Mean",norm_scale)
         self.linear = nn.Linear(nclass, 1)
         self.relu = nn.ReLU(True)
 
-    def forward(self, x, adj):
-
+    def forward(self, x, adj,k=20):
+        n = adj.shape[0]
+       
         for i, layer in enumerate(self.hidden_layers):
             x = layer(x, adj)
             x = self.norm(x)
             x= self.relu(x)
             feat=F.dropout(x, self.dropout, training=self.training)
+            adj = np.matmul(x, x.transpose())
+            adj +=  -1.0*np.eye(n)
+             #Dynamic edges k nearest
+            for i in range(0,n):
+              vals=[(adj[i][x],x) for x in range(0,n)]
+              vals.sort()
+              vals = vals[:k]
+              adj[i]=[adj[i][x] if (adj[i][x],x) in vals else 0]
+            adj_diag = np.sum(adj, axis=0) #rowise sum
+            adj = np.matmul(adj, np.diag(1/adj_diag))
+            adj = adj + np.eye(adj.shape[0])
+            adj = torch.Tensor(adj).cuda()
         x = self.out_layer(x, adj)
         #x = self.linear(x)
         # x = F.softmax(x, dim=1)

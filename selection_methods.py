@@ -214,13 +214,13 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
         features = get_features(model, unlabeled_loader)
         features = nn.functional.normalize(features)
         adj = aff_to_adj(features)
-
+        col_mean = adj.mean(dim=0)
         gcn_module = GCN(nfeat=features.shape[1],
                          nhid=args.hidden_units,
                          nclass=1,
                          dropout=args.dropout_rate,nlayer=args.num_layers,
                          norm_mode=args.norm_mode,
-                         norm_scale=args.norm_scale).cuda()
+                         norm_scale=col_mean).cuda()
 
         models      = {'gcn_module': gcn_module}
 

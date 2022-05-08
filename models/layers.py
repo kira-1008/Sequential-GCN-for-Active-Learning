@@ -3,7 +3,7 @@ import torch.nn as nn
 import numpy as np 
 
 class PairNorm(nn.Module):
-    def __init__(self, mode='PN', scale=1):
+    def __init__(self, scale, mode='PN'):
         """
             mode:
               'None' : No normalization 
@@ -28,7 +28,10 @@ class PairNorm(nn.Module):
         if self.mode == 'None':
             return x
         
-        col_mean = x.mean(dim=0)      
+        col_mean = x.mean(dim=0)  
+        col_sum = x.sum(dim=0)  
+        if self.mode  == 'Mean':
+          x = x*self.scale/col_sum  
         if self.mode == 'PN':
             x = x - col_mean
             rownorm_mean = (1e-6 + x.pow(2).sum(dim=1).mean()).sqrt() 
