@@ -91,13 +91,14 @@ class GCN(nn.Module):
         ])
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
+        self.FC = nn.Linear(nhid,1)
         self.norm = PairNorm("Mean",norm_scale)
         self.linear = nn.Linear(nclass, 1)
         self.relu = nn.ReLU(True)
 
     def forward(self, x, adj,k=20):
         n = adj.shape[0]
-       
+        layer_encodings=[]
         for i, layer in enumerate(self.hidden_layers):
             x = layer(x, adj)
             x = self.norm(x)
@@ -115,6 +116,11 @@ class GCN(nn.Module):
             adj = np.matmul(adj, np.diag(1/adj_diag))
             adj = adj + np.eye(adj.shape[0])
             adj = torch.Tensor(adj).cuda()
+            layer_encodings.append(x)
+        #gate fusion
+        layer_weights=[self.FC(x) for x in layer_encodings]
+        importance_score=nn.Softmax(layer_weights)
+        x = (layer_encodings *  importance_score).sum() 
         x = self.out_layer(x, adj)
         #x = self.linear(x)
         # x = F.softmax(x, dim=1)
