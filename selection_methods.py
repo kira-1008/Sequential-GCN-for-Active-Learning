@@ -22,6 +22,7 @@ def aff_to_adj(x, y=None):
     x = x.detach().cpu().numpy()
     adj = np.matmul(x, x.transpose())
     adj +=  -1.0*np.eye(adj.shape[0])
+    n = adj.shape[0]
     for i in range(0,n):
         vals=[(adj[i][x],x) for x in range(0,n)]
         vals.sort()
