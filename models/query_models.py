@@ -92,6 +92,7 @@ class GCN(nn.Module):
         self.FC = nn.Linear(nhid,1)
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
+        self.FC = nn.Linear(nhid,1)
         self.norm = PairNorm("Mean",norm_scale)
         self.linear = nn.Linear(nclass, 1)
         self.relu = nn.ReLU(True)
