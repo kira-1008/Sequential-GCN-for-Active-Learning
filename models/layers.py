@@ -15,7 +15,9 @@ class PairNorm(nn.Module):
               especially for GCN and GAT.)
             PairNorm is typically used after each graph convolution operation. 
         """
-        assert mode in ['None', 'PN',  'PN-SI', 'PN-SCS']
+        print("MOde is =" , mode)
+        print("Scale is= ",scale)
+        #assert mode in ['Mean','None', 'PN',  'PN-SI', 'PN-SCS']
         super(PairNorm, self).__init__()
         self.mode = mode
         self.scale = scale
@@ -29,8 +31,12 @@ class PairNorm(nn.Module):
             return x
         
         col_mean = x.mean(dim=0)  
-        col_sum = x.sum(dim=0)  
+        
+        #Mean normalisation
         if self.mode  == 'Mean':
+          print("x= ",x.shape)
+          print("scale= ",self.scale.shape)
+          print("col_sum= ", col_sum.shape)
           x = x*self.scale/col_sum  
         if self.mode == 'PN':
             x = x - col_mean

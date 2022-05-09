@@ -93,9 +93,10 @@ class GCN(nn.Module):
         self.out_layer = GraphConvolution(nfeat if nlayer==1 else nhid , nclass)
         self.dropout = dropout
         self.FC = nn.Linear(nhid,1)
-        self.norm = PairNorm("Mean",norm_scale)
+        # self.norm = PairNorm(mode="Mean",scale=norm_scale)
         self.linear = nn.Linear(nclass, 1)
         self.relu = nn.ReLU(True)
+        self.softmax  = nn.Softmax(dim=0)
 
     def forward(self, x, adj,k=20):
         n = adj.shape[0]
@@ -103,27 +104,36 @@ class GCN(nn.Module):
         for i, layer in enumerate(self.hidden_layers):
             x = layer(x, adj)
             #residual connection
-            x = x + layer_encodings[-1]
-            x = self.norm(x)
+            if i !=0 :
+              x = x + layer_encodings[-1]
+            else:
+              col_mean=x.mean(dim=0)
+            col_sum=x.sum(dim=0)  
             x= self.relu(x)
+            x  = x * col_mean / col_sum
             feat=F.dropout(x, self.dropout, training=self.training)
-            adj = np.matmul(x, x.transpose())
-            adj +=  -1.0*np.eye(n)
+            # t=x.detach().cpu().numpy()
+            # adj = np.matmul(t, t.transpose())
+            # adj +=  -1.0*np.eye(n)
              #Dynamic edges k nearest
-            for i in range(0,n):
-              vals=[(adj[i][x],x) for x in range(0,n)]
-              vals.sort()
-              vals = vals[:k]
-              adj[i]=[adj[i][x] if (adj[i][x],x) in vals else 0]
-            adj_diag = np.sum(adj, axis=1) #rowise sum
-            adj = np.matmul(adj, np.diag(1/adj_diag))
-            adj = adj + np.eye(adj.shape[0])
-            adj = torch.Tensor(adj).cuda()
+            # for i in range(0,n):
+            #   vals=[(adj[i][x],x) for x in range(0,n)]
+            #   vals.sort()
+            #   vals = vals[:k]
+            #   adj[i]=[adj[i][x] if (adj[i][x],x) in vals else 0 for x in range(0,n)]
+            # adj_diag = np.sum(adj, axis=1) #rowise sum
+            # adj = np.matmul(adj, np.diag(1/adj_diag))
+            # adj = adj + np.eye(adj.shape[0])
+            # adj = torch.Tensor(adj).cuda()
             layer_encodings.append(x)
         #gate fusion
         layer_weights=[self.FC(x) for x in layer_encodings]
-        importance_score=nn.Softmax(layer_weights)
-        x = (layer_encodings *  importance_score).sum() 
+        importance_score=[]
+        for i in range(0,len(layer_weights)):
+              importance_score.append(self.softmax(layer_weights[i]))
+        importance_score= torch.stack(importance_score)
+        layer_encodings= torch.stack(layer_encodings)
+        x = (layer_encodings *  importance_score).sum(dim=0)
         x = self.out_layer(x, adj)
         #x = self.linear(x)
         # x = F.softmax(x, dim=1)
