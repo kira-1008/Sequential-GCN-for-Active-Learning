@@ -14,8 +14,6 @@ import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data.sampler import SubsetRandomSampler
 import torchvision.transforms as T
 import torchvision.models as models
-import matplotlib
-import matplotlib.pyplot as plt
 import argparse
 # Custom
 import models.resnet as resnet
@@ -47,9 +45,6 @@ parser.add_argument("-c","--cycles", type=int, default=5,
 parser.add_argument("-t","--total", type=bool, default=False,
                     help="Training on the entire dataset")
 parser.add_argument("-layers","--num_layers",type=int,default=2,help="Number of layers in the GCN")
-# - PairNorm mode, use PN-SI or PN-SCS for GCN and GAT. With more than 5 layers get lots improvement.
-parser.add_argument('--norm_mode', type=str, default='None', help='Mode for PairNorm, {None, PN, PN-SI, PN-SCS}')
-parser.add_argument('--norm_scale', type=float, default=1.0, help='Row-normalization scale')
 args = parser.parse_args()
 
 ##
@@ -57,19 +52,16 @@ args = parser.parse_args()
 if __name__ == '__main__':
 
     method = args.method_type
-    methods = ['Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL']
+    methods = ['Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL','Age']
     datasets = ['cifar10', 'cifar100', 'fashionmnist','svhn']
     assert method in methods, 'No method %s! Try options %s'%(method, methods)
     assert args.dataset in datasets, 'No dataset %s! Try options %s'%(args.dataset, datasets)
     '''
     method_type: 'Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL'
     '''
-    name='results_'+str(args.method_type)+"_"+args.dataset +'_main'+str(args.cycles)+"_layers"+str(args.num_layers)+'_normmode'+args.norm_mode
-    results = open('results/'+name+'.txt','w')
-    result={}
+    results = open('results_'+str(args.method_type)+"_"+args.dataset +'_main'+str(args.cycles)+str(args.total)+'.txt','w')
     print("Dataset: %s"%args.dataset)
     print("Method type:%s"%method)
-    print("Layers :%s"%args.num_layers)
     if args.total:
         TRIALS = 1
         CYCLES = 1
@@ -140,10 +132,7 @@ if __name__ == '__main__':
             print('Trial {}/{} || Cycle {}/{} || Label set size {}: Test acc {}'.format(trial+1, TRIALS, cycle+1, CYCLES, len(labeled_set), acc))
             np.array([method, trial+1, TRIALS, cycle+1, CYCLES, len(labeled_set), acc]).tofile(results, sep=" ")
             results.write("\n")
-            if trial==0:
-              result[str(len(labeled_set))]=acc
-            else:
-              result[str(len(labeled_set))]+=acc
+
 
             if cycle == (CYCLES-1):
                 # Reached final training cycle
@@ -163,15 +152,3 @@ if __name__ == '__main__':
                                             pin_memory=True)
 
     results.close()
-    for key in result.keys():
-      result[key]=result[key]/TRIALS
-      result[key]=round(result[key],3)
-    fig, ax = plt.subplots()
-    names, counts = zip(*result.items())
-    ax.plot(names, counts)
-    ax.scatter(names,counts)
-
-    for i, txt in enumerate(counts):
-       ax.annotate(txt, (names[i], counts[i]))
-    plt.savefig("Images/{}".format(name))
-    
