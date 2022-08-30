@@ -57,12 +57,12 @@ args = parser.parse_args()
 if __name__ == '__main__':
 
     method = args.method_type
-    methods = ['Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL']
+    methods = ['Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL','Age']
     datasets = ['cifar10', 'cifar100', 'fashionmnist','svhn']
     assert method in methods, 'No method %s! Try options %s'%(method, methods)
     assert args.dataset in datasets, 'No dataset %s! Try options %s'%(args.dataset, datasets)
     '''
-    method_type: 'Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL'
+    method_type: 'Random', 'UncertainGCN', 'CoreGCN', 'CoreSet', 'lloss','VAAL','Age'
     '''
     name='results_'+str(args.method_type)+"_"+args.dataset +'_main'+str(args.cycles)+"_layers"+str(args.num_layers)+'_normmode'+args.norm_mode
     results = open('results/'+name+'.txt','w')
