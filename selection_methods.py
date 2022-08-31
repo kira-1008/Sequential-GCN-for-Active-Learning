@@ -273,8 +273,8 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
           os.makedirs(directory)
         G = nx.Graph(adj_list)
         normcen = centralissimo(G)	#the larger the score is, the more representative the node is in the graph
-        np.savetxt(directory+'normcen', normcen, fmt='%.6f', delimiter=' ', newline='\n')
-
+        #np.savetxt(directory+'normcen', normcen, fmt='%.6f', delimiter=' ', newline='\n')
+        normcen = normcen[:SUBSET]
         models      = {'gcn_module': gcn_module}
 
         optim_backbone = optim.Adam(models['gcn_module'].parameters(), lr=LR_GCN, weight_decay=WDECAY)
@@ -293,9 +293,6 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
             loss.backward()
             optimizers['gcn_module'].step()
          
-       print("Loading normality scores")
-        normcen = np.loadtxt("res/cifar10"+"/graphcentrality/normcen")
-        print("Successfully loaded")
         cenperc = np.asarray([perc(normcen,i) for i in range(len(normcen))])
         basef=0.9
         #time sensitive parameters
@@ -326,6 +323,7 @@ def query_samples(model, method, data_unlabeled, subset, labeled_set, cycle, arg
             else:
                 print("Inside AGE")
                 scores_subset = scores[:SUBSET].detach().cpu().numpy()
+                scores_subset = np.squeeze(scores_subset)
                 prob = [scores_subset,1-scores_subset]
                 prob = np.transpose(prob)
                 entropy = sc.stats.entropy(prob,axis=1)
